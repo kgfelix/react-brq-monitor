@@ -1,5 +1,6 @@
 import Home from './Home';
 import About from './About';
+import Comentario from './Comentario';
 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
@@ -11,6 +12,9 @@ const RootStack = createStackNavigator(
         },
         About: {
             screen: About
+        },
+        Comentario: {
+            screen: Comentario
         }
     }
 );

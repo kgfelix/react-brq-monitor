@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native'
 import api from './services/apis';
-import { objectMethod, isMetaProperty } from '@babel/types';
+import styles from './styles'
 
 export default class Home extends Component {
 
     static navigationOptions = {
-        title: 'Home',
+        title: 'BRQ Monitor',
         headerStyle: {
             backgroundColor: '#3C8DBC',
         },
@@ -33,23 +33,25 @@ export default class Home extends Component {
     };
 
     renderItem = ({ item }) => (
-        <View>
-            <Text> {item.id} </Text>
-            <Text> {item.qaProjeto} </Text>
+        <View style={styles.itemContainer}>
+            <Text style={styles.itemTitle}> {item.id} </Text>
+            <Text style={styles.itemDescription}> {item.qaProjeto} </Text>
 
-            <TouchableOpacity
+            <TouchableOpacity 
+                style={styles.itemButton}
                 onPress={() => {
-                    this.props.navigation.navigate('About')
+                    this.props.navigation.navigate('About', {bug: item})
                 }}>
-                <Text> Ir para About </Text>
+                <Text style={styles.itemButtonText}> Detalhes </Text>
             </TouchableOpacity>
         </View>
     )
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <FlatList
+                    contentContainerStyle={styles.section}
                     data={this.state.bugs}
                     keyExtractor={item => item.id}
                     renderItem={this.renderItem} />
