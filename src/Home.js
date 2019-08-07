@@ -25,8 +25,8 @@ export default class Home extends Component {
     }
 
     loadBugs = async () => {
-        const response = await api.get('/monitor-bugs');
-        const { bugs } = response.data;
+        const response = await api.get('/bugs');
+        const { bugs } = response.data._embedded;
 
         this.setState({ bugs });
         console.log(bugs);

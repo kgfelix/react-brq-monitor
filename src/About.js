@@ -18,7 +18,7 @@ export default class About extends Component {
         <Icon.Button name="plus-square" 
                       backgroundColor="transparent" 
                       color="#FFFFFF" 
-                      onPress={ () => navigation.navigate('Comentario')                      
+                      onPress={ () => navigation.navigate('Comentario',{bugId: navigation.state.params.bug._id})                      
                       }>
             <Text style={{fontSize: 20}}></Text>
         </Icon.Button>                                                                     
